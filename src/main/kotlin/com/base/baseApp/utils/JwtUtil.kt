@@ -11,7 +11,7 @@ import kotlin.collections.HashMap
 @Service
 class JwtUtil {
     companion object {
-        const val SECRET_KEY = "secret"
+        const val SECRET_KEY = "5368566D5971337336763979244226452948404D635166546A576E5A72347537"
     }
 
     fun extractUsername(token: String): String {
@@ -46,7 +46,7 @@ class JwtUtil {
     private fun createToken(claims: HashMap<String, Objects>, username: String): String {
         return Jwts.builder().setClaims(claims).setSubject(username)
             .setIssuedAt(Date(System.currentTimeMillis()))
-            .setExpiration(Date(System.currentTimeMillis() + 1000 * 60 * 10))
+            .setExpiration(Date(System.currentTimeMillis() + 1000 * 60 * 10 * 10))
             .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact()
     }
 
