@@ -1,6 +1,5 @@
 package com.base.baseApp.models
 
-import org.hibernate.annotations.Proxy
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -38,4 +37,3 @@ data class Rol(
     @JoinColumn(name= "email", nullable = false, insertable = false, updatable = false)
     val user: User
 )
-

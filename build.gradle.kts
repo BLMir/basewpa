@@ -26,6 +26,11 @@ dependencies {
 	implementation("org.springframework.data:spring-data-jpa")
 	implementation("org.springframework:spring-jdbc")
 	implementation("mysql:mysql-connector-java:5.1.43")
+	implementation("io.jsonwebtoken:jjwt-api:0.11.1")
+	implementation("io.jsonwebtoken:jjwt-impl:0.11.1")
+	implementation("io.jsonwebtoken:jjwt-jackson:0.11.1")
+	implementation("javax.xml.bind:jaxb-api:2.3.0")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
