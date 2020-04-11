@@ -27,8 +27,6 @@ class EmailValidator: ConstraintValidator<ValidEmail,String> {
         return (validateEmail(email))
     }
 
-    override fun initialize(p0: ValidEmail?) {}
-
     private fun validateEmail(email: String): Boolean {
         pattern = Pattern.compile(EMAIL_PATTERN)
         matcher = pattern.matcher(email)
