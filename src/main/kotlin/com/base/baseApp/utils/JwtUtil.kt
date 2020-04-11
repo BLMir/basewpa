@@ -11,7 +11,7 @@ import kotlin.collections.HashMap
 @Service
 class JwtUtil {
     companion object {
-        const val SECRET_KEY = "5368566D5971337336763979244226452948404D635166546A576E5A72347537"
+        const val SECRET_KEY = "secret"
     }
 
     fun extractUsername(token: String): String {
