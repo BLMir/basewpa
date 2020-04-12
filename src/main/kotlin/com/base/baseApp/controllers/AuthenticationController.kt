@@ -54,10 +54,12 @@ class AuthenticationController {
     @RequestMapping("/registration", method = [RequestMethod.POST])
     fun registrationEndPoint(@RequestBody @Valid accountDto: UserDto, errors: Errors): String {
 
-        if (errors.hasErrors()){
-            return errors.allErrors.toString()
+        val userRegister = try {
+            userDetailsService.registerNewAccount(userDto = accountDto)
+        } catch (e: Exception){
+            throw e
         }
-        return accountDto.toString()
+        return userRegister.toString()
     }
 }
 
