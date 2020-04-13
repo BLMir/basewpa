@@ -23,7 +23,8 @@ class JwtRequestFilter : OncePerRequestFilter() {
 
     @Override
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
-        println("heeere")
+
+        println("@@@@@HERE::::::::")
         val authorizationHeader = request.getHeader("Authorization")
 
         var username: String? = null

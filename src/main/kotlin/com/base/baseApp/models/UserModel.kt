@@ -21,8 +21,8 @@ data class User(
     val firstName: String,
     val lastName: String,
     val passWord: String,
-    val active: Boolean,
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    val enabled: Boolean = false,
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     val roles: List<Rol> = emptyList()
 )
 
@@ -35,7 +35,8 @@ data class Rol(
     @Column(nullable = false)
     val email: String,
     val rol: String,
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name= "email", nullable = false)
-    val user: User? = null
+    @ManyToOne
+    @JoinColumn(name= "email", nullable = false, insertable = false, updatable = false)
+    val user: User
 )
+
