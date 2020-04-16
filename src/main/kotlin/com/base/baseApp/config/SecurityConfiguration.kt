@@ -1,4 +1,4 @@
-package com.base.baseApp
+package com.base.baseApp.config
 
 import com.base.baseApp.filters.JwtRequestFilter
 import com.base.baseApp.services.MyUserDetailsService
@@ -31,7 +31,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Override
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
-            .authorizeRequests().antMatchers("/authenticate", "/registration").permitAll()
+            .authorizeRequests().antMatchers("/auth/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
