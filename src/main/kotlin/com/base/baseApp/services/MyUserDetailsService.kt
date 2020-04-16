@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -29,6 +30,9 @@ class MyUserDetailsService: UserDetailsService {
 
     @Autowired
     lateinit var tokenRepository: VerificationTokenRepository
+
+    @Autowired
+    lateinit var byBCryptPasswordEncoder: BCryptPasswordEncoder
 
     @Override
     override fun loadUserByUsername(email: String): UserDetails {
@@ -48,7 +52,7 @@ class MyUserDetailsService: UserDetailsService {
 
         val userRegistered = User(
             email = userDto.email,
-            passWord = userDto.password,
+            passWord = byBCryptPasswordEncoder.encode(userDto.password),
             lastName = userDto.lastName,
             firstName = userDto.firstName
         )
