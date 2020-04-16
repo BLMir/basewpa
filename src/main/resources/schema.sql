@@ -1,7 +1,8 @@
 create table users
 (
     email    varchar(150) not null primary key,
-    user     varchar(50)  not null,
+    firstName     varchar(150)  not null,
+    lastName     varchar(150)  not null,
     password varchar(50)  not null,
     enabled  boolean      not null
 );

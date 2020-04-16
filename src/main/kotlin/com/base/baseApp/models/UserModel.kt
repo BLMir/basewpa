@@ -1,5 +1,6 @@
 package com.base.baseApp.models
 
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -17,19 +18,20 @@ data class User(
     @Id
     @Column(nullable = false)
     val email: String,
-    val username: String,
+    val firstName: String,
+    val lastName: String,
     val passWord: String,
-    val active: Boolean,
+    val enabled: Boolean = false,
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    val roles: List<Rol>
+    val roles: List<Rol> = emptyList()
 )
 
 @Entity
-@Table(name = "rol")
+@Table(name = "users_rol")
 data class Rol(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int? = null,
     @Column(nullable = false)
     val email: String,
     val rol: String,
